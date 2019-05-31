@@ -5,26 +5,43 @@
 	<title>Parcel Sandbox</title>
 	<meta charset="UTF-8" />
 	<link type="text/css" rel="stylesheet" href="src/styles.css" />
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<div id="app" class="wrapper">
-		<section>
-			<div>
-				<h1 id="title"></h1>
-			</div>
-		</section>
-		<section>
-			<div id="calculator" class="container">
-				<div id="display">
+	<div id="app" class="light-mode">
+		<div class="wrapper">
+			<section id="title" class="text-center py-5 bg-blue-900">
+				<div id="title__area" class="py-2 rounded">
+					<h1 id="title__text" class="text-white font-thin"></h1>
 				</div>
-				<div id="buttons"></div>
-			</div>
-		</section>
+				<div id="power-button" class="px-3 py-1">|</div>
+			</section>
+			<section>
+				<div id="calculator" class="container">
+					<div id="display"></div>
+					<div id="buttons">
+						<div id="buttons__digits"></div>
+						<div id="buttons__operations">
+							<div class="button" id="add">+</div>
+							<div class="button" id="subtract">-</div>
+							<div class="button" id="multiply">x</div>
+							<div class="button" id="divide">/</div>
+							<div class="button" id="equals">=</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div id="previous-value"></div>
+				<div id="current-value"></div>
+				<div id="answer-value"></div>
+			</section>
+		</div>
 	</div>
 
-	<script src="src/index.js">
-	</script>
+	<script src="src/calc.js">
+</script>
 </body>
 
 </html>
