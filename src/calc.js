@@ -21,10 +21,10 @@ class Calculator {
     operation = '';
   }
 
-  updateDisplay(arrayOfNumbers) {
-    for (let i = 0; i < arrayOfNumbers.length; i++) {
+  updateDisplay(entered) {
+    for (let i = 0; i < entered.length; i++) {
       let digitSpace = get(`digit-${i}`);
-      digitSpace.innerText = arrayOfNumbers[i];
+      digitSpace.innerText = entered[i];
     }
   }
 
@@ -65,22 +65,26 @@ class Calculator {
   }
 }
 
+// Let's store some data
+
 let currentValue = [];
 let prevValue = 0;
 let answer = '';
 let answerArray = [];
 let operation = '';
 
-// Create helper to turn array into number
+// Create helper to turn array of strings into a number
 
 function numberFromArray(array) {
   if (array.length === 0) {
     return;
   }
-  let theString = array.join('');
-  let theNumber = parseInt(theString, 10);
-  return theNumber;
+  let string = array.join('');
+  let number = parseInt(string, 10);
+  return number;
 }
+
+// Create some UI
 
 const Title = title => {
   let h1 = document.getElementById('title__text');
@@ -115,6 +119,8 @@ const Buttons = () => {
   }
 };
 
+// Because I hate typing out document.getElementById
+
 function get(variable) {
   return document.getElementById(`${variable}`);
 }
@@ -142,7 +148,7 @@ Buttons();
 // Add event listeners to buttons immediately after we create them
 
 (function buttonActions(window, document, undefined) {
-  // Feature test
+  // Browser feature test
   if (!('localStorage' in window) || !('querySelector' in document)) return;
 
   let buttons = document.querySelectorAll('.button');
