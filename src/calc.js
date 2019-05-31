@@ -2,8 +2,7 @@
 
 const config = {
   allowedDigits: 9,
-  darkMode: false,
-  h1: 'The BEST Calculator'
+  h1: 'The BEST Calculator' // Call it whatever you want
 };
 
 // Create a calculator class
@@ -71,10 +70,6 @@ let prevValue = 0;
 let answer = '';
 let answerArray = [];
 let operation = '';
-
-// Create a new calculator
-
-const c = new Calculator();
 
 // Create helper to turn array into number
 
@@ -144,7 +139,7 @@ Display();
 
 Buttons();
 
-// Add event listeners to buttons
+// Add event listeners to buttons immediately after we create them
 
 (function buttonActions(window, document, undefined) {
   // Feature test
@@ -228,3 +223,7 @@ Buttons();
     );
   });
 })(window, document);
+
+// Create a new calculator
+
+const c = new Calculator();
