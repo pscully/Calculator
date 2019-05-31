@@ -1,7 +1,3 @@
-// import { Title, Display, Buttons } from './scripts/ui';
-// import { config } from './ config/config';
-// import { get } from './scripts/helpers';
-
 // Some config settings
 
 const config = {
@@ -91,6 +87,63 @@ function numberFromArray(array) {
   return theNumber;
 }
 
+const Title = title => {
+  let h1 = document.getElementById('title__text');
+  h1.innerHTML = title;
+};
+
+const Display = () => {
+  let display = document.getElementById('display');
+  for (let i = 0; i < 9; i++) {
+    let displayDigit = document.createElement('div');
+    displayDigit.classList.add('digit');
+    displayDigit.setAttribute('id', `digit-${i}`);
+    display.appendChild(displayDigit);
+  }
+};
+
+const Buttons = () => {
+  let buttonsArea = document.getElementById('buttons__digits');
+  for (let i = 0; i < 12; i++) {
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('button');
+    buttonDiv.setAttribute('id', `button-${i}`);
+    buttonDiv.setAttribute('role', 'button');
+    if (i === 10) {
+      buttonDiv.innerText = 'Dark Mode';
+    } else if (i === 11) {
+      buttonDiv.innerText = 'Clear';
+    } else {
+      buttonDiv.innerText = i;
+    }
+    buttonsArea.appendChild(buttonDiv);
+  }
+};
+
+function get(variable) {
+  return document.getElementById(`${variable}`);
+}
+
+let currentValueSpace = get('current-value');
+let previousValueSpace = get('previous-value');
+let answerSpace = get('answer-value');
+
+// Add a title to the page
+
+if (config.h1 === '') {
+  Title('The Calculator');
+} else {
+  Title(config.h1);
+}
+
+// Add a screen to show numbers
+
+Display();
+
+// Add some buttons to use
+
+Buttons();
+
 // Add event listeners to buttons
 
 (function buttonActions(window, document, undefined) {
@@ -175,60 +228,3 @@ function numberFromArray(array) {
     );
   });
 })(window, document);
-
-const Title = title => {
-  let h1 = document.getElementById('title__text');
-  h1.innerHTML = title;
-};
-
-const Display = () => {
-  let display = document.getElementById('display');
-  for (let i = 0; i < 9; i++) {
-    let displayDigit = document.createElement('div');
-    displayDigit.classList.add('digit');
-    displayDigit.setAttribute('id', `digit-${i}`);
-    display.appendChild(displayDigit);
-  }
-};
-
-const Buttons = () => {
-  let buttonsArea = document.getElementById('buttons__digits');
-  for (let i = 0; i < 12; i++) {
-    let buttonDiv = document.createElement('div');
-    buttonDiv.classList.add('button');
-    buttonDiv.setAttribute('id', `button-${i}`);
-    buttonDiv.setAttribute('role', 'button');
-    if (i === 10) {
-      buttonDiv.innerText = 'Dark Mode';
-    } else if (i === 11) {
-      buttonDiv.innerText = 'Clear';
-    } else {
-      buttonDiv.innerText = i;
-    }
-    buttonsArea.appendChild(buttonDiv);
-  }
-};
-
-function get(variable) {
-  return document.getElementById(`${variable}`);
-}
-
-let currentValueSpace = get('current-value');
-let previousValueSpace = get('previous-value');
-let answerSpace = get('answer-value');
-
-// Add a title to the page
-
-if (config.h1 === '') {
-  Title('The Calculator');
-} else {
-  Title(config.h1);
-}
-
-// Add a screen to show numbers
-
-Display();
-
-// Add some buttons to use
-
-Buttons();
